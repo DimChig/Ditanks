@@ -18,3 +18,12 @@ Game Features:
 - Game over score
 - And so much more!
 This was a very good project for me to learn and understand python
+
+Gameplay screenshots:
+
+![](/img/GameplayScreenshots/screen1.jpg?raw=true)
+![](/img/GameplayScreenshots/screen2.jpg?raw=true)
+![](/img/GameplayScreenshots/screen3.jpg?raw=true)
+![](/img/GameplayScreenshots/screen4.jpg?raw=true)
+![](/img/GameplayScreenshots/screen5.jpg?raw=true)
+![](/img/GameplayScreenshots/screen6.jpg?raw=true)
