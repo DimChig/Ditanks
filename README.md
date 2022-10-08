@@ -2,7 +2,7 @@
 Python pygame 2d singleplayer game about tanks
 
 About game:
-- This was my first python experience
+- This was my first big python project
 - I created this game for fun when i was 15 years old (10th grade)
 - It took me around 1 week to make it (3-5 hours a day)
 - I used python library pygame for it
