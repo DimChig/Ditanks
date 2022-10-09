@@ -6,7 +6,7 @@ About game:
 - I created this game for fun when i was 15 years old (10th grade)
 - It took me around 1 week to make it (3-5 hours a day)
 - I used python library pygame for it
-- All of collisions, camera movements, AI path generator was done from scratch by myself (that is why this project was a bit hard)
+- All of collisions, camera movements, AI path generator were done from scratch by myself (that is why this project was a bit hard)
 - Everything is just in 2 .py files (I know that it is not good)
 - Around 2k lines of code
 
