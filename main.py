@@ -196,12 +196,12 @@ player_trail_frequency = 20
 player_health = 0
 player_health_max = 100  # editable
 player_health_regen_speed = 10  # editable
-player_health_regen_delay = 50  # editable
+player_health_regen_delay = 20  # editable
 player_health_regen_delay_counter = 0
 player_health_regen_time = 3  # editable time to not receive damage
 player_health_regen_lasttime = time.time()
 player_ultimate = 0
-player_ultimate_max = 20
+player_ultimate_max = 5
 player_ultimate_step = 1
 player_score = 0
 player_score_for_ai_normal = 50
@@ -222,7 +222,8 @@ tanks = []
 boosters = []
 booster_collider = 0.5
 
-difficulty_new_bots = 1.5 #e %
+enemies_count = 5
+difficulty_new_bots = 0.5 #e %
 
 
 
@@ -331,7 +332,6 @@ sprites_tilemap_box = [
     pygame.transform.scale(pygame.image.load('img/Environment/box/box14.png'), (cell_size, cell_size)),
     pygame.transform.scale(pygame.image.load('img/Environment/box/box15.png'), (cell_size, cell_size))]
 corners_size = cell_size / 5
-print(tile_size, " than ", cell_size, " so ", corners_size)
 sprites_tilemap_corners = [
     pygame.transform.scale(pygame.image.load('img/Environment/box/corner1.png'), (corners_size, corners_size)),
     pygame.transform.scale(pygame.image.load('img/Environment/box/corner2.png'), (corners_size, corners_size)),
@@ -391,6 +391,10 @@ world_maps = [[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1,
 [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1], [1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1], [1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1], [1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1], [1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
 [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1], [1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1], [1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1], [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
 [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1], [1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]]
+
+#world_maps = [[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+#[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+#              [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1], [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1], [1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]]
 
 pygame.font.init()
 font_gameOver = pygame.font.Font("fonts/main.otf", 100)
@@ -529,12 +533,12 @@ def drawMouseAim():
     mouseX, mouseY = pygame.mouse.get_pos()
 
     center = (mouseX, mouseY)
-    radius1 = 30
-    radius2 = 20
-    radius3 = 10
-    color1 = (255, 0, 0, 20)
-    color2 = (255, 0, 0, 50)
-    color3 = (255, 0, 0, 100)
+    radius1 = 15
+    radius2 = 10
+    radius3 = 5
+    color1 = (255, 0, 0, 50)
+    color2 = (255, 0, 0, 100)
+    color3 = (255, 0, 0, 200)
 
     if isVisualisationOn == False:
         target_rect = pygame.Rect(center, (0, 0)).inflate((radius1 * 2, radius1 * 2))
@@ -610,8 +614,10 @@ def drawPlayerUltimate():
 
     width = 150
     height = width
-    color_empty = (195, 188, 0)
+    color_empty = (143, 143, 143)
     color_fill = (255, 234, 0)
+    if player_ultimate < player_ultimate_max:
+        color_fill = (196, 196, 196)
     color_outline = (138, 130, 0)
 
     x = screen_width - width/2 - 50
@@ -985,7 +991,6 @@ def pickUpBooster(booster, x, y):
 
 def useUltimate():
     global world_data, player_ultimate, doBulletsCollideWithPlayer, player_ultimate_max, playerX, playerY, player_zoom, grid_size, screen_width, screen_height
-    print(player_ultimate)
     if player_ultimate < player_ultimate_max: return
     mouseX, mouseY = pygame.mouse.get_pos()
     mouseX = (mouseX - screen_width/2) * player_zoom / grid_size + playerX
@@ -1011,7 +1016,7 @@ def useUltimate():
     player_ultimate = 0
     while True:
         playerX, playerY = getNextPosByAngle(playerX, playerY, angle, speed)
-        clock.tick(60)
+        clock.tick(150)
         moveBullets()
         drawWorld()
         handleAnimations(True)
@@ -1028,6 +1033,9 @@ def useUltimate():
             playerY = newY
             break
     doBulletsCollideWithPlayer = True
+
+    for tank in tanks:
+        tank.shoot_frequency_counter = 0
 
 def movePlayer():
     global isVisualisationOn, isGameOver, booster_collider
@@ -1356,12 +1364,19 @@ class TankAI:
         self.colliding_array = []
         self.i = -1
         self.j = -1
+        self.currentTargetAim = None
         # self.path_target = 0
 
-    def isPlayerInSight(self):
+    def calcAngle(self, target_loc):
+        x1, y1 = self.x, self.y
+        x2, y2 = target_loc
+        return (math.degrees(math.atan2(y2 - y1, x2 - x1))) % 360
+
+    def isTargetInSight(self, target_loc):
+        target_x, target_y = target_loc
         # shoot ray
         block_size = tile_size
-        distance = math.sqrt(math.pow(self.x - playerX, 2) + math.pow(self.y - playerY, 2))
+        distance = math.sqrt(math.pow(self.x - target_x, 2) + math.pow(self.y - target_y, 2))
 
         if distance > bullet_lifetime_ai * bullet_speed:
             return False
@@ -1370,9 +1385,7 @@ class TankAI:
 
         speed = distance / frequency
         # angle
-        x1, y1 = convertRealPosToCameraPos((self.x, self.y))
-        x2, y2 = (screen_width / 2, screen_height / 2)
-        angle = (math.degrees(math.atan2(y2 - y1, x2 - x1))) % 360
+        angle = self.calcAngle(target_loc)
 
         check_poses = []
         for i in range(0, frequency):
@@ -1401,16 +1414,110 @@ class TankAI:
                             return False
         return True
 
+    def predictPlayerLocation(self):
+
+
+
+        global playerX, playerY, player_dirX, player_dirY, player_speed, world_data
+
+        currentPlayerX, currentPlayerY = playerX, playerY
+
+        distance = abs(self.x - currentPlayerX) + abs(self.y - currentPlayerY)
+
+        precision = 2
+        modificator = random.randint(150, 175) / 100.0
+
+        prediction_distance = math.ceil(distance / bullet_speed / modificator / precision)
+        prediction_player_speed = player_speed * precision
+
+        if distance < tile_size * 2 or distance > bullet_lifetime_ai * bullet_speed:
+             prediction_distance = 0
+
+
+
+        for i in range(prediction_distance):
+            isCollidingX = False
+            isCollidingY = False
+            forsetX = 0
+            forsetY = 0
+
+            player_cellI = int(map(currentPlayerY, 0, grid_size * tile_size, 0, grid_size))
+            player_cellJ = int(map(currentPlayerX, 0, grid_size * tile_size, 0, grid_size))
+
+            colliding_array = []
+            check_distance = 2.2  # cells
+            for i in range(0, grid_size):
+                for j in range(0, grid_size):
+                    if math.sqrt(math.pow(player_cellI - i, 2) + math.pow(player_cellJ - j, 2)) < check_distance:
+                        if world_data[i][j] != 0:
+                            colliding_array.append((i, j))
+
+            for pos in colliding_array:
+                i = pos[0]
+                j = pos[1]
+
+                # on screen position
+                block_size = tile_size
+                x1, y1 = (j * block_size, i * block_size)
+
+                player_collider = player_collider_size * tile_size
+
+                x2 = currentPlayerX - player_collider / 2
+                y2 = currentPlayerY - player_collider / 2
+
+                new_pos_x = (x2 + player_dirX * prediction_player_speed, y2)
+                new_pos_y = (x2, y2 + player_dirY * prediction_player_speed)
+
+                if isCollidingX == False and checkCollision((x1, y1), block_size, new_pos_x, player_collider) == True:
+                    isCollidingX = True
+                    if player_dirX == 1:
+                        forsetX = -(x2 + player_collider - x1 + 1)
+                    if player_dirX == -1:
+                        forsetX = -(x1 + cell_size - x2 + 1)
+
+                if isCollidingY == False and checkCollision((x1, y1), block_size, new_pos_y, player_collider) == True:
+                    isCollidingY = True
+                    if player_dirY == 1:
+                        forsetY = -(y2 + player_collider - y1 + 1)
+                    if player_dirY == -1:
+                        forsetY = -(y1 + cell_size - y2 + 1)
+
+            if isCollidingX == False:
+                currentPlayerX += player_dirX * prediction_player_speed
+            else:
+                if (forsetX > 0 and forsetX < player_collider / 2):
+                    currentPlayerX += player_dirX * forsetX / player_zoom
+            if (isCollidingY == False):
+                currentPlayerY += player_dirY * prediction_player_speed
+            else:
+                if (forsetY > 0 and forsetY < player_collider / 2):
+                    currentPlayerY += player_dirY * forsetY / player_zoom
+
+        return (currentPlayerX, currentPlayerY)
+    def getTargetLocation(self):
+        target_loc = self.predictPlayerLocation()
+        self.currentTargetAim = target_loc
+        return target_loc
+
     def handleShoot(self):
         self.shoot_frequency_counter += 1
         if self.shoot_frequency_counter > self.shoot_frequency:
             self.shoot_frequency_counter = 0
-            if self.isPlayerInSight():
-                self.shoot()
+
+            target_loc = self.getTargetLocation()
+
+            if self.isTargetInSight(target_loc):
+                self.shoot(target_loc)
             else:
                 self.shoot_frequency_counter = self.shoot_frequency * 0.9
 
-    def shoot(self):
+    def shoot(self, target_loc):
+
+        x1, y1 = self.x, self.y
+        x2, y2 = target_loc
+
+        self.turret_angle = (math.degrees(math.atan2(y2 - y1, x2 - x1)) + 90) % 360
+
         angle = self.turret_angle
         bullet = Bullet(self.x, self.y, angle - 90, self.sprite_bullet, bullet_lifetime_ai, self.player_id)
         for i in range(0, 8):
@@ -1660,7 +1767,6 @@ class TankAI:
         if self.dirX != 0 or self.dirY != 0:
             self.createTrail()
 
-
 player_ai_posI = -1
 player_ai_posJ = -1
 
@@ -1668,6 +1774,8 @@ player_ai_posJ = -1
 def moveTanks():
     for tank in tanks:
         tank.move()
+        if isVisualisationOn and tank.currentTargetAim:
+            pygame.draw.circle(screen, (255, 0, 0), convertRealPosToCameraPos(tank.currentTargetAim), 5)
         if isGameOver == False:
             tank.handleShoot()
 
@@ -1731,14 +1839,15 @@ def handleAITurretRotateAngle(tank):
     to_angle = tank.turret_angle
     global playerX, playerY
 
+    target_loc = tank.getTargetLocation()
     x1, y1 = convertRealPosToCameraPos((tank.x, tank.y))
-    x2, y2 = (screen_width / 2, screen_height / 2)
+    x2, y2 = convertRealPosToCameraPos(target_loc)
 
     if isVisualisationOn:
         pygame.draw.line(screen, (0, 255, 0), (x1, y1), (x2, y2), 2)
-    to_angle = math.degrees(math.atan2(y2 - y1, x2 - x1)) + 90
+    to_angle = tank.calcAngle(target_loc) + 90
 
-    speed = 1
+    speed = 3
     to_angle = to_angle % 360
     if (abs(tank.turret_angle - to_angle) > speed):
         tank.turret_angle += getRotationDirection(tank.turret_angle, to_angle) * speed
@@ -1818,8 +1927,8 @@ def spawnAiRandom():
     spawnAi(i, j)
 
 def spawnAis():
-    global playerX, playerY, tile_size
-    for i in range(0, 5):
+    global playerX, playerY, tile_size, enemies_count
+    for i in range(0, enemies_count):
         spawnAiRandom()
 
 
