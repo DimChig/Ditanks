@@ -1,29 +1,30 @@
 # Ditanks
-Python pygame 2d singleplayer game about tanks
 
-About game:
-- This was my first big python project
-- I created this game for fun when i was 15 years old (10th grade)
-- It took me around 1 week to make it (3-5 hours a day)
-- I used python library pygame for it
-- All of collisions, camera movements, AI path generator were done from scratch by myself (that is why this project was a bit hard)
-- Everything is just in 2 .py files (I know that it is not good)
-- Around 2k lines of code
+Ditanks is a 2D single-player tank game built in Python using Pygame.
 
-Game Features:
-- Player hit points, bullets ricochet, ultimate power (teleportation)
-- Enemy tanks AI (path generator, bullet trajectory)
-- Map generator
-- Progressively increasing level difficulty
-- Game over score
-- And so much more!
-This was a very good project for me to learn and understand python
+## About the Game
 
-Gameplay screenshots:
+- **Purpose**: Created for fun and as a learning experience.
+- **Background**: My first large Python project, developed when I was 15 (10th grade).
+- **Development Time**: Completed in around 1 week, working 3-5 hours daily.
+- **Libraries Used**: Pygame.
+- **Technical Details**: Includes collision handling, camera movement, and AI path generation—all coded from scratch.
+- **Code Structure**: The entire game is in two `.py` files, totaling around 2,000 lines of code.
 
-![](/img/GameplayScreenshots/screen1.jpg?raw=true)
-![](/img/GameplayScreenshots/screen2.jpg?raw=true)
-![](/img/GameplayScreenshots/screen3.jpg?raw=true)
-![](/img/GameplayScreenshots/screen4.jpg?raw=true)
-![](/img/GameplayScreenshots/screen5.jpg?raw=true)
-![](/img/GameplayScreenshots/screen6.jpg?raw=true)
+## Game Features
+
+- **Player Mechanics**: Hit points, bullet ricochet, and an ultimate power (teleportation).
+- **Enemy AI**: Path generation, bullet trajectory prediction.
+- **Map Generation**: Randomly generated maps for each level.
+- **Progressive Difficulty**: Increasing challenge as the game progresses.
+- **Score Tracking**: Displays score at game over.
+- **And More!**: This project was a great opportunity to deepen my understanding of Python and game development.
+
+## Gameplay Screenshots
+
+![Gameplay Screenshot 1](/img/GameplayScreenshots/screen1.jpg?raw=true)
+![Gameplay Screenshot 2](/img/GameplayScreenshots/screen2.jpg?raw=true)
+![Gameplay Screenshot 3](/img/GameplayScreenshots/screen3.jpg?raw=true)
+![Gameplay Screenshot 4](/img/GameplayScreenshots/screen4.jpg?raw=true)
+![Gameplay Screenshot 5](/img/GameplayScreenshots/screen5.jpg?raw=true)
+![Gameplay Screenshot 6](/img/GameplayScreenshots/screen6.jpg?raw=true)
